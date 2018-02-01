@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="3dp"
+    android:layout_margin="3dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="@drawable/profile_item_background"
+        android:layout_width="match_parent"
+        android:padding="9dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/profile_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:id="@+id/profile_user_name"
+                android:fontFamily="@font/yosemite_regular"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="UserName"/>
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profile_email"
+                android:fontFamily="@font/yosemite_regular"
+                android:textColor="@color/ngoBtnBackGrey"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="UserName"/>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/accept_request"
+                    android:text="Accept"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:background="@drawable/profile_item_background"
+                    android:backgroundTint="@color/bootStrapPrimaryBtn"
+                    android:fontFamily="@font/yosemite_regular"
+                    android:textColor="@color/white"
+                    android:padding="5dp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/decline_request"
+                    android:text="Decline"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/profile_item_background"
+                    android:fontFamily="@font/yosemite_regular"
+                    android:textColor="@color/bootStrapPrimaryBtn"
+                    android:padding="5dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <!--<ImageView
+            android:id="@+id/add_friend_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="4dp"
+            android:tint="@color/ngoGrey1"
+            android:src="@drawable/ic_person_add_black_72dp"/>
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/accept_request"
+            android:text="Accept"
+            android:layout_marginTop="4dp"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/profile_item_background"
+            android:backgroundTint="@color/ngoGreen"
+            android:fontFamily="@font/yosemite_regular"
+            android:elevation="3dp"
+            android:textColor="@color/white"
+            android:padding="5dp" />
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/decline_request"
+            android:layout_marginTop="4dp"
+            android:text="Decline"
+            android:textStyle="bold"
+            android:layout_below="@id/accept_request"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/profile_item_background"
+            android:backgroundTint="@color/ngoRed2"
+            android:fontFamily="@font/yosemite_regular"
+            android:elevation="3dp"
+            android:textColor="@color/white"
+            android:padding="5dp" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_took"
+            android:textStyle="bold"
+            android:text=""
+            android:layout_marginLeft="8dp"
+            android:visibility="invisible"
+            android:layout_alignBottom="@id/profile_content"
+            android:background="@drawable/profile_item_background"
+            android:backgroundTint="@color/bootStrapPrimaryBtn"
+            android:fontFamily="@font/yosemite_regular"
+            android:elevation="3dp"
+            android:textColor="@color/white"
+            android:padding="5dp" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

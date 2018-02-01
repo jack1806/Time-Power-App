@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryOld">#3F51B5</color>
+    <color name="colorPrimaryDarkOld">#303F9F</color>
+    <color name="colorAccentOld">#FF4081</color>
+
+    <color name="colorPrimaryWeb">#00bcd4</color>
+    <color name="colorPrimaryDarkWeb">#0097a7</color>
+    <color name="colorAccentWeb">#f2fe71</color>
+
+    <color name="colorAccent">@color/ngoOrange</color>
+    <color name="colorPrimary">@color/bootStrapPrimaryBtn</color>
+    <color name="colorPrimaryDark">@color/colorPrimaryOld</color>
+
+    <color name="tableItemTime">@color/bootStrapPrimaryBtn</color>
+
+    <color name="samOrange">#FF6347</color>
+
+    <color name="bootStrapPrimaryBtn">#53A3CD</color>
+
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="red">#f00</color>
+    <color name="green">#0f0</color>
+    <color name="blue">#00f</color>
+
+    <color name="ngoRed1">#E51626</color>
+    <color name="ngoRed2">#EB4553</color>
+    <color name="ngoGrey1">#B7B6B7</color>
+    <color name="ngoGrey2">#707070</color>
+    <color name="ngoOrange">#FFA500</color>
+    <color name="ngoWhite">#FFFFFC</color>
+    <color name="ngoBtnBackGrey">#606060</color>
+    <color name="ngoNotice">#F4F4F1</color>
+    <color name="ngoWhiteCardBackgound">#EEEDED</color>
+    <color name="ngoGreen">#22DE0D</color>
+    <color name="ngoBlue">#62E8F1</color>
+    <color name="ngoGlossyRed">#FF1619</color>
+    <color name="ngoHeaderBlue">#0018FF</color>
+
+    <color name="bg_login">#26ae90</color>
+    <color name="bg_register">#2e3237</color>
+    <color name="bg_main">#428bca</color>
+    <color name="input_login">#222222</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_register">#888888</color>
+    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_hint">#5e6266</color>
+    <color name="btn_login">#26ae90</color>
+    <color name="btn_login_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+    <color name="btn_logut_bg">#ff6861</color>
+
+    <color name="startBlue">#09c6df</color>
+    <color name="endBlue">#0bcce6</color>
+    <color name="grayLight">#fafafa</color>
+
+</resources>

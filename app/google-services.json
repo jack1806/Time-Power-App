@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "35789524147",
+    "firebase_url": "https://timepower-d2260.firebaseio.com",
+    "project_id": "timepower-d2260",
+    "storage_bucket": "timepower-d2260.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35789524147:android:9e9817b13919231c",
+        "android_client_info": {
+          "package_name": "com.example.android.timepower"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35789524147-9iqjtbksv9p7icc0uk2s9el5kk8rsh30.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.timepower",
+            "certificate_hash": "87dfd1f176611c2d5172ceb38b3cdbf15600e1a2"
+          }
+        },
+        {
+          "client_id": "35789524147-o5tbp97s03rad1t5a2q1rbfeo5hkp39h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjRwMYJ_ic_US-00LhgnhdMhFlQui2LZE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35789524147-o5tbp97s03rad1t5a2q1rbfeo5hkp39h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

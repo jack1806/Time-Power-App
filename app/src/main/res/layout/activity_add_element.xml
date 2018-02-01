@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Add New"
+        android:gravity="center"
+        android:textColor="@color/bootStrapPrimaryBtn"
+        android:fontFamily="@font/baron_neue_bold"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center"
+        android:layout_weight="0.1"/>
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textStyle="bold"
+            android:textColor="@color/bootStrapPrimaryBtn"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"/>
+
+        <EditText
+            android:hint="Header"
+            android:id="@+id/add_header"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:maxLines="1"
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--<ImageView
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sub-Title"
+            android:textStyle="bold"
+            android:textColor="@color/bootStrapPrimaryBtn"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"/>
+
+        <EditText
+            android:maxLines="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="12dp"
+            android:id="@+id/add_sub_title"
+            android:hint="Sub-Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+       <!-- <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"/> -->
+
+        <!--<LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:padding="5dp"
+                android:text="From"
+                android:inputType="time"
+                android:textStyle="bold"
+                android:textColor="@color/bootStrapPrimaryBtn"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:id="@+id/add_start_time"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"></TextView>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"/>
+
+            <TextView
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="To"
+                android:textStyle="bold"
+                android:textColor="@color/bootStrapPrimaryBtn"
+                android:inputType="time"
+                android:layout_width="0dp"
+                android:id="@+id/add_end_time"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"></TextView>
+
+        </LinearLayout> -->
+
+       <!-- <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorAccent"/> -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:padding="5dp"
+                    android:text="From"
+                    android:inputType="time"
+                    android:textStyle="bold"
+                    android:textColor="@color/bootStrapPrimaryBtn"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:id="@+id/add_start_time"
+                    android:layout_height="wrap_content"></TextView>
+
+                <com.tomerrosenfeld.customanalogclockview.CustomAnalogClock
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/from_time_display"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/start_time_show"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+           <!-- <ImageView
+                android:layout_margin="5dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"/> -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="To"
+                    android:textStyle="bold"
+                    android:textColor="@color/bootStrapPrimaryBtn"
+                    android:inputType="time"
+                    android:layout_width="match_parent"
+                    android:id="@+id/add_end_time"
+                    android:layout_height="wrap_content"></TextView>
+
+                <com.tomerrosenfeld.customanalogclockview.CustomAnalogClock
+                    android:id="@+id/end_time_display"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/end_time_show"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:text="ADD"
+        android:background="@color/bootStrapPrimaryBtn"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:id="@+id/element_add_button"/>
+
+</LinearLayout>

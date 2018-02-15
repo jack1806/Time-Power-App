@@ -69,7 +69,7 @@ public class EditElementActivity extends AppCompatActivity {
                 setStartTime();
             }
         });
-        mToTime = (TextView) findViewById(R.id.add_end_time);
+        mToTime = (TextView) findViewById(R.id.end_end_time);
         mToDisplay = (TextView)findViewById(R.id.end_time_show);
         endClock.setOnClickListener(new View.OnClickListener() {
             @Override

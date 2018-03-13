@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class EditElementActivity extends AppCompatActivity {
     TextView mToTime,mToDisplay;
     Button mAddButton;
     Button mDeleteButton;
+    ImageButton backButton;
     int mStartTimeInt;
     int mEndTimeInt;
     int mStartTimeHour;
@@ -101,6 +103,15 @@ public class EditElementActivity extends AppCompatActivity {
 
         mStartTimeInt = mCurrentElement.getStartTime();
         mEndTimeInt = mCurrentElement.getEndTime();
+
+        backButton = (ImageButton)findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), EditTimeTable.class));
+                finish();
+            }
+        });
 
         mAddButton = (Button)findViewById(R.id.element_add_button);
         mAddButton.setOnClickListener(new View.OnClickListener() {

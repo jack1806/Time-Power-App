@@ -22,8 +22,8 @@
                         android:id="@+id/nav_my_fr"/>
                     <item android:title="@string/nav_request"
                         android:id="@+id/nav_requests"/>
-                    <item android:id="@+id/nav_free_fr"
-                        android:title="@string/nav_free_friends"/>
+                    <!--<item android:id="@+id/nav_free_fr"-->
+                        <!--android:title="@string/nav_free_friends"/>-->
                 </group>
             </menu>
         </item>

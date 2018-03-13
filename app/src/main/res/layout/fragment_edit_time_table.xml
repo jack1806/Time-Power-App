@@ -8,6 +8,7 @@
     <ScrollView android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:scrollbars="none"
         android:layout_weight="1"
         tools:context="com.example.android.timepower.EditTimeTable$PlaceholderFragment">
 
@@ -44,6 +45,11 @@
                 android:src="@drawable/ic_add_circle_outline_black_24dp"/>
 
             <include layout="@layout/layout_add_element_timetable"/>-->
+
+            <View
+                android:layout_width="match_parent"
+                android:background="@android:color/transparent"
+                android:layout_height="?actionBarSize"/>
 
         </LinearLayout>
 

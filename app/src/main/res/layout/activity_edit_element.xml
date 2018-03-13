@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="Edit"
-        android:gravity="center"
-        android:textColor="@color/bootStrapPrimaryBtn"
-        android:fontFamily="@font/baron_neue_bold"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_gravity="center"
-        android:layout_weight="0.1"/>
+    <RelativeLayout
+        android:background="@color/lbl_name"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:text="EDIT"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/baron_neue_bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/back_button"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:tint="@color/white"
+            android:background="@android:color/transparent"/>
+
+    </RelativeLayout>
 
 
     <LinearLayout android:orientation="vertical"
@@ -25,41 +42,62 @@
         android:layout_weight="1">
 
         <LinearLayout
+            android:background="#dadadada"
             android:layout_width="match_parent"
+            android:gravity="bottom"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:text="Title"
-                android:textStyle="bold"
-                android:layout_gravity="bottom"
-                android:gravity="center_vertical"
-                android:textColor="@color/bootStrapPrimaryBtn"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textStyle="bold"
+                    android:textColor="@color/bootStrapPrimaryBtn"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="2dp"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="DELETE"
-                android:fontFamily="@font/baron_neue_bold"
-                android:textColor="@color/colorAccent"
-                android:background="@android:color/transparent"
-                android:textStyle="bold"
-                android:id="@+id/edit_delete_button"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:layout_marginTop="6dp"
+                    android:textColor="#ff0000"/>
+
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="DELETE"-->
+                <!--android:fontFamily="@font/baron_neue_bold"-->
+                <!--android:textColor="@color/colorAccent"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:textStyle="bold"-->
+                <!--android:id="@+id/edit_delete_button"/>-->
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="DELETE"
+                    android:layout_gravity="end"
+                    android:drawableLeft="@drawable/ic_delete_forever_black_24dp"
+                    android:drawableTint="@color/white"
+                    android:fontFamily="@font/baron_neue_bold"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:id="@+id/edit_delete_button"/>
 
         </LinearLayout>
 
         <EditText
             android:hint="Header"
             android:id="@+id/edit_header"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:padding="8dp"
             android:maxLines="1"
-            android:layout_marginBottom="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="#5e5e5e"
+            android:background="#dadadada"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -71,24 +109,36 @@
             android:background="@color/colorAccent"/>-->
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sub-Title"
+            android:background="#dadadada"
             android:textStyle="bold"
+            android:paddingBottom="4dp"
             android:textColor="@color/bootStrapPrimaryBtn"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"/>
+            android:paddingTop="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"/>
 
         <EditText
             android:maxLines="1"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="12dp"
+            android:padding="8dp"
+            android:background="#dadadada"
             android:id="@+id/edit_sub_title"
             android:hint="Sub-Title"
+            android:textColor="@color/black"
+            android:textColorHint="#5e5e5e"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:background="@color/lbl_name"-->
+            <!--android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
+            <!--android:layout_marginRight="@dimen/activity_horizontal_margin"/>-->
+
 
         <!--<ImageView
             android:layout_marginTop="5dp"
@@ -137,6 +187,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="#a666"
             android:layout_weight="1">
 
             <LinearLayout
@@ -153,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/bootStrapPrimaryBtn"
+                    android:textColor="@color/black"
                     android:id="@+id/edit_start_time"
                     android:layout_height="wrap_content"></TextView>
 
@@ -165,6 +216,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:textColor="@color/black"
                     android:id="@+id/start_time_show"
                     android:layout_height="wrap_content" />
 
@@ -188,7 +240,7 @@
                     android:padding="5dp"
                     android:text="To"
                     android:textStyle="bold"
-                    android:textColor="@color/bootStrapPrimaryBtn"
+                    android:textColor="@color/black"
                     android:inputType="time"
                     android:layout_width="match_parent"
                     android:id="@+id/end_end_time"
@@ -203,6 +255,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:id="@+id/end_time_show"
+                    android:textColor="@color/black"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
@@ -213,10 +266,9 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_height="?actionBarSize"
         android:text="UPDATE"
-        android:background="@color/bootStrapPrimaryBtn"
+        android:background="@color/lbl_name"
         android:textColor="#fff"
         android:textSize="18sp"
         android:id="@+id/element_add_button"/>

@@ -13,5 +13,5 @@
         android:centerColor="@color/colorPrimaryDark"
         />
     <solid android:color="#EAEAEA"/>-->
-    <solid android:color="#fff"/>
+    <solid android:color="#eeffffff"/>
 </shape>

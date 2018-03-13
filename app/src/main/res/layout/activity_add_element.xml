@@ -1,37 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="Add New"
-        android:gravity="center"
-        android:textColor="@color/bootStrapPrimaryBtn"
-        android:fontFamily="@font/baron_neue_bold"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_gravity="center"
-        android:layout_weight="0.1"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:text="Add New"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/baron_neue_bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/back_button"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:tint="@color/lbl_name"
+            android:background="@color/white"/>
+
+    </RelativeLayout>
+
 
     <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:elevation="@dimen/activity_horizontal_margin"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Title"
-            android:textStyle="bold"
-            android:textColor="@color/bootStrapPrimaryBtn"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textStyle="bold"
+                android:textColor="@color/bootStrapPrimaryBtn"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:layout_marginTop="6dp"
+                android:textColor="#ff0000"/>
+
+        </LinearLayout>
 
         <EditText
             android:hint="Title"
@@ -39,6 +69,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:maxLines="1"
+            android:textColor="@color/black"
+            android:textColorHint="#5e5e5e"
             android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -66,9 +98,35 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="12dp"
             android:id="@+id/add_sub_title"
+            android:textColor="@color/black"
+            android:textColorHint="#5e5e5e"
             android:hint="Sub-Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="Add a slot"-->
+                <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"-->
+                <!--android:textColor="@color/lbl_name"-->
+                <!--android:gravity="center"/>-->
+            <!---->
+            <!--<ImageView-->
+                <!--android:id="@+id/add_slot_button"-->
+                <!--android:layout_marginRight="@dimen/activity_horizontal_margin"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:padding="@dimen/activity_vertical_margin"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/ic_add_box_black_24dp"-->
+                <!--android:layout_gravity="center"/>-->
+            <!---->
+        <!--</LinearLayout>-->
 
        <!-- <ImageView
             android:layout_marginTop="5dp"
@@ -193,31 +251,36 @@
 
         <!--</LinearLayout>-->
 
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:id="@+id/add_slot_recycler_view"></android.support.v7.widget.RecyclerView>
 
-        <ImageView
-            android:id="@+id/add_slot_button"
+        <TextView
             android:layout_width="wrap_content"
-            android:padding="@dimen/activity_vertical_margin"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_box_black_24dp"
-            android:layout_gravity="center"
-            android:tint="@color/white"/>
+            android:layout_centerInParent="true"
+            android:text="No Slots are added."
+            android:textColor="@color/black"/>
 
-    </LinearLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_height="?actionBarSize"
+            android:src="@drawable/ic_add_black_24dp"
+            android:tint="@color/white"
+            app:backgroundTint="@color/lbl_name"
+            android:id="@+id/element_add_button"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:text="DONE"
-        android:background="@color/bootStrapPrimaryBtn"
-        android:textColor="#fff"
-        android:textSize="18sp"
-        android:id="@+id/element_add_button"/>
+    </RelativeLayout>
 
 </LinearLayout>

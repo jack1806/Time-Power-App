@@ -32,9 +32,14 @@ import java.util.ArrayList;
 public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTableRecyclerViewAdapter.CustomView> {
 
     ArrayList<timeTableElement> tableElements;
+    boolean isFriendsTimeTable = false;
 
     public TimeTableRecyclerViewAdapter(ArrayList<timeTableElement> timeTableElements){
         tableElements = timeTableElements;
+    }
+    public TimeTableRecyclerViewAdapter(ArrayList<timeTableElement> timeTableElements,boolean isFriends){
+        tableElements =timeTableElements;
+        isFriendsTimeTable = isFriends;
     }
 
     @Override
@@ -52,7 +57,7 @@ public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTable
         holder.setClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
-                if(isLongClick){
+                if(isLongClick && !isFriendsTimeTable){
                     Gson gson = new Gson();
                     String data = gson.toJson(tableElements.get(position));
                     Intent intent = new Intent(view.getContext(), EditElementActivity.class);

@@ -18,5 +18,6 @@ public class sharedPrefContractClass {
     public static final String SHARED_PREF_LOGIN = "loggedIn";
     public static final String SHARED_PREF_NOTIF = "notif";
     public static final String SHARED_PREF_FIRST_LOGIN = "firstLogin";
+    public static final String SHARED_PREF_DATABASE = "database";
 
 }

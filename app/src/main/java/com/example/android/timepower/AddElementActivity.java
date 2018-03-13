@@ -4,6 +4,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.AnalogClock;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -46,7 +48,7 @@ public class AddElementActivity extends AppCompatActivity {
     EditText mSubHeader;
     TextView mFromTime,mFromDisplay;
     TextView mToTime,mToDisplay;
-    Button mAddButton;
+    ImageButton backButton;
     int mStartTimeInt = 0;
     int mEndTimeInt = 0;
     int mStartTimeHour;
@@ -57,7 +59,7 @@ public class AddElementActivity extends AppCompatActivity {
     Intent mIntent;
     SharedPreferences mPreferences;
     CustomAnalogClock startClock,endClock;
-    ImageView mAdditem;
+    FloatingActionButton mAdditem;
     RecyclerView mSlotRecyclerView;
     List<addSlot> addSlots = new ArrayList<>();
 
@@ -76,7 +78,15 @@ public class AddElementActivity extends AppCompatActivity {
         mCurrentDay = mIntent.getStringExtra(intentContractClass.editTimeTable_To_AddElement_Day);
         mHeader = (EditText)findViewById(R.id.add_header);
         mSubHeader = (EditText) findViewById(R.id.add_sub_title);
-        mAdditem = (ImageView) findViewById(R.id.add_slot_button);
+        backButton = (ImageButton) findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AddElementActivity.this, EditTimeTable.class));
+                finish();
+            }
+        });
+        mAdditem = (FloatingActionButton) findViewById(R.id.element_add_button);
         mAdditem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,14 +115,14 @@ public class AddElementActivity extends AppCompatActivity {
 //                setEndTime();
 //            }
 //        });
-        mAddButton = (Button)findViewById(R.id.element_add_button);
-        mAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AddElementActivity.this, EditTimeTable.class));
-                finish();
-            }
-        });
+//        mAddButton = (ImageButton)findViewById(R.id.element_add_button);
+//        mAddButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(AddElementActivity.this, EditTimeTable.class));
+//                finish();
+//            }
+//        });
 //        mAddButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

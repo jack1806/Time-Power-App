@@ -8,6 +8,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.RingtoneManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.SystemClock;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        getLatestData();
 
         if(firebaseAuth.getCurrentUser()==null){
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
@@ -263,8 +266,8 @@ public class MainActivity extends AppCompatActivity
             changeFrame(new RequestFragment(),R.string.nav_request);
         else if(id == R.id.nav_my_fr)
             changeFrame(new MyFriendsFragment(),R.string.nav_my_friends);
-        else if(id == R.id.nav_free_fr)
-            changeFrame(new FreeFriendsFragment(),R.string.nav_free_friends);
+//        else if(id == R.id.nav_free_fr)
+//            changeFrame(new FreeFriendsFragment(),R.string.nav_free_friends);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -338,6 +341,33 @@ public class MainActivity extends AppCompatActivity
         sharedPrefLinker prefLinker = new sharedPrefLinker();
         prefLinker.setNotify(false,sharedPreferences);
         Log.d(TAG, "scheduleNotification: "+tableElement.getHeader());
+    }
+
+    public boolean getLatestData(){
+        ConnectivityManager connectivityManager;
+        NetworkInfo networkInfo;
+        connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        networkInfo = connectivityManager.getActiveNetworkInfo();
+        if(networkInfo.isConnectedOrConnecting() && networkInfo !=null) {
+            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+            final ArrayList<userObject> userObjects = new ArrayList<>();
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                        userObjects.add(new userObject(snapshot.child("profile").getValue(userProfile.class),
+                                snapshot.child("timetable").getValue(timeTable.class)));
+                    prefLinker.setDatabase(new firebaseDatabase(userObjects), mSharedPreferences);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            return true;
+        }
+        return false;
     }
 
 }

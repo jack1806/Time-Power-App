@@ -2,12 +2,13 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="3dp"
+    app:cardCornerRadius="4dp"
     android:layout_margin="3dp"
+    app:cardElevation="1dp"
     android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:background="@drawable/profile_item_background"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:padding="9dp"
         android:layout_height="wrap_content">
@@ -16,27 +17,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher_round"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_marginLeft="8dp"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:textColor="@color/ngoBtnBackGrey"
-                    android:id="@+id/profile_user_name"
-                    android:fontFamily="@font/yosemite_regular"
-                    android:textStyle="bold"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="UserName"/>
+                    android:gravity="center_vertical"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:id="@+id/profile_user_name"
+                        android:fontFamily="@font/yosemite_regular"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="UserName"/>
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/online_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/online_circle"></ImageView>
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -50,6 +61,14 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:tint="@color/bg_register"
+            android:id="@+id/view_time_table"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_pageview_black_24dp"/>
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

@@ -263,4 +263,13 @@ public class timeTable {
         return ranges;
     }
 
+    public boolean isFree(){
+        Calendar calendar = Calendar.getInstance();
+        if(freeSlot(calendar.get(Calendar.DAY_OF_WEEK),
+                calendar.get(Calendar.HOUR_OF_DAY)*60+calendar.get(Calendar.MINUTE),
+                calendar.get(Calendar.HOUR_OF_DAY)*60+calendar.get(Calendar.MINUTE)+1).size()>0)
+            return true;
+        return false;
+    }
+
 }

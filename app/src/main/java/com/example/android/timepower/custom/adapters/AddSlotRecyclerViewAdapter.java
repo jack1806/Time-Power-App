@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -49,14 +50,14 @@ public class AddSlotRecyclerViewAdapter extends RecyclerView.Adapter<AddSlotRecy
         TextView day;
         TextView fromTime;
         TextView toTime;
-        ImageView delete;
+        Button delete;
 
         public CustomView(View itemView) {
             super(itemView);
             day = (TextView)itemView.findViewById(R.id.day);
             fromTime = (TextView)itemView.findViewById(R.id.start_time);
             toTime = (TextView)itemView.findViewById(R.id.end_time);
-            delete = (ImageView)itemView.findViewById(R.id.delete_item);
+            delete = (Button)itemView.findViewById(R.id.delete_item);
         }
 
         public void bind(int position){

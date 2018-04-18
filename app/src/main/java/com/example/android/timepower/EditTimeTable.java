@@ -57,7 +57,7 @@ public class EditTimeTable extends AppCompatActivity {
      */
     private ViewPager mViewPager;
     public SharedPreferences preferences;
-    public Button mAddButton;
+    public FloatingActionButton mAddButton;
     //SharedPreferences mSharedPreferences;
     //sharedPrefLinker prefLinker;
 
@@ -86,7 +86,7 @@ public class EditTimeTable extends AppCompatActivity {
 
         final timeTable table = new timeTable();
 
-        mAddButton = (Button)findViewById(R.id.edit_time_table_add_button);
+        mAddButton = (FloatingActionButton)findViewById(R.id.edit_time_table_add_button);
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

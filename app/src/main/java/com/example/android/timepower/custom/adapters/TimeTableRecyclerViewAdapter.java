@@ -3,8 +3,10 @@ package com.example.android.timepower.custom.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import com.example.android.timepower.EditElementActivity;
 import com.example.android.timepower.EditTimeTable;
 import com.example.android.timepower.R;
+import com.example.android.timepower.contract.GlobalVariableClass;
 import com.example.android.timepower.custom.objects.timeTableElement;
 import com.example.android.timepower.custom.objects.timeTable;
 import com.example.android.timepower.custom.objects.sharedPrefLinker;
@@ -30,6 +33,8 @@ import java.util.ArrayList;
  */
 
 public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTableRecyclerViewAdapter.CustomView> {
+
+    String TAG = "JACK | ";
 
     ArrayList<timeTableElement> tableElements;
     boolean isFriendsTimeTable = false;
@@ -80,7 +85,7 @@ public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTable
         TextView header,subHeader,startTime,endTime;
         ItemClickListener itemClickListener;
         String startFinal,endFinal;
-        View view;
+        View view,indicator;
 
         public CustomView(View itemView) {
             super(itemView);
@@ -89,6 +94,10 @@ public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTable
             subHeader = (TextView)itemView.findViewById(R.id.time_table_item_sub_title);
             startTime = (TextView)itemView.findViewById(R.id.time_table_item_from_time);
             endTime = (TextView)itemView.findViewById(R.id.time_table_item_end_time);
+            indicator = itemView.findViewById(R.id.startIndicator);
+            int a = (int)(Math.random()*50);
+            Log.e(TAG, "CustomView: "+a);
+            indicator.setBackgroundColor(Color.parseColor(GlobalVariableClass.colors[a%5]));
             view.setOnLongClickListener(this);
             view.setOnClickListener(this);
         }

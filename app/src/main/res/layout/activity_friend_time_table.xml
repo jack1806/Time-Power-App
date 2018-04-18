@@ -10,8 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/white">
+        android:layout_height="?actionBarSize">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -28,11 +27,7 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         app:tabMode="scrollable"
-        app:tabIndicatorColor="@color/startBlue"
-        app:tabTextColor="#dadada"
         android:layout_below="@id/appbar"
-        app:tabSelectedTextColor="@color/black"
-        android:background="#cdeaeaea"
         android:layout_height="wrap_content">
 
     </android.support.design.widget.TabLayout>
@@ -44,7 +39,6 @@
         android:layout_below="@id/tabs"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
 
 
 </RelativeLayout>

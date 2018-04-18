@@ -34,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/edit_time_table_recycler_view"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
             <!--<ImageView
@@ -45,11 +46,6 @@
                 android:src="@drawable/ic_add_circle_outline_black_24dp"/>
 
             <include layout="@layout/layout_add_element_timetable"/>-->
-
-            <View
-                android:layout_width="match_parent"
-                android:background="@android:color/transparent"
-                android:layout_height="?actionBarSize"/>
 
         </LinearLayout>
 

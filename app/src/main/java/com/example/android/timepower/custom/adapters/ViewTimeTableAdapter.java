@@ -2,12 +2,14 @@ package com.example.android.timepower.custom.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.timepower.EditElementActivity;
@@ -59,7 +61,8 @@ public class ViewTimeTableAdapter extends RecyclerView.Adapter<ViewTimeTableAdap
         TextView header,subHeader,startTime,endTime;
         ItemClickListener itemClickListener;
         String startFinal,endFinal;
-        View view,indicator;
+        View view;
+        ImageView indicator;
 
         public CustomView(View itemView) {
             super(itemView);
@@ -68,10 +71,10 @@ public class ViewTimeTableAdapter extends RecyclerView.Adapter<ViewTimeTableAdap
             subHeader = (TextView)itemView.findViewById(R.id.time_table_item_sub_title);
             startTime = (TextView)itemView.findViewById(R.id.time_table_item_from_time);
             endTime = (TextView)itemView.findViewById(R.id.time_table_item_end_time);
-            indicator = itemView.findViewById(R.id.startIndicator);
+            indicator = (ImageView) itemView.findViewById(R.id.startIndicator);
             int a = (int)(Math.random()*50);
             Log.e(TAG, "CustomView: "+a);
-            indicator.setBackgroundColor(Color.parseColor(GlobalVariableClass.colors[a%5]));
+            indicator.setColorFilter(Color.parseColor(GlobalVariableClass.colors[a%5]));
         }
 
         public void bind(timeTableElement element){

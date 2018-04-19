@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,7 +86,8 @@ public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTable
         TextView header,subHeader,startTime,endTime;
         ItemClickListener itemClickListener;
         String startFinal,endFinal;
-        View view,indicator;
+        View view;
+        ImageView indicator;
 
         public CustomView(View itemView) {
             super(itemView);
@@ -94,10 +96,10 @@ public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTable
             subHeader = (TextView)itemView.findViewById(R.id.time_table_item_sub_title);
             startTime = (TextView)itemView.findViewById(R.id.time_table_item_from_time);
             endTime = (TextView)itemView.findViewById(R.id.time_table_item_end_time);
-            indicator = itemView.findViewById(R.id.startIndicator);
+            indicator = (ImageView) itemView.findViewById(R.id.startIndicator);
             int a = (int)(Math.random()*50);
             Log.e(TAG, "CustomView: "+a);
-            indicator.setBackgroundColor(Color.parseColor(GlobalVariableClass.colors[a%5]));
+            indicator.setColorFilter(Color.parseColor(GlobalVariableClass.colors[a%5]));
             view.setOnLongClickListener(this);
             view.setOnClickListener(this);
         }

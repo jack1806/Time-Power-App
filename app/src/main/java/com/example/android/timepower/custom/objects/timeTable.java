@@ -242,22 +242,38 @@ public class timeTable {
     public ArrayList<Range<Integer>> freeSlot(int day,int from,int to){
 
         Log.d("DayIndex", "freeSlot: "+day);
+        if(day==-1)
+            day = 6;
         ArrayList<Range<Integer>> ranges = new ArrayList<>();
         Range<Integer> iterator ;
         ArrayList<timeTableElement> tableElements = getDayElements(getDays().get(day));
         int startIterator = from;
         for(int i=0;(i<tableElements.size() && startIterator<=to);i++){
-            if(startIterator<tableElements.get(i).getStartTime()
-                    && tableElements.get(i).getEndTime()<=to) {
+            if(startIterator<tableElements.get(i).getStartTime()) {
                 iterator = Range.create(startIterator,tableElements.get(i).getStartTime());
                 ranges.add(iterator);
+                Log.d("DayIndex", "freeSlot: "+startIterator+" - "+tableElements.get(i).getStartTime());
                 startIterator = tableElements.get(i).getEndTime();
             }
+//            else if(startIterator<tableElements.get(i).getStartTime()
+//                    && tableElements.get(i).getEndTime()>to){
+//                iterator = Range.create(startIterator,tableElements.get(i).getStartTime());
+//                ranges.add(iterator);
+//                startIterator = tableElements.get(i).getEndTime();
+//            }
             else if(startIterator == tableElements.get(i).getStartTime())
                 startIterator = tableElements.get(i).getEndTime();
         }
-        if(startIterator<to){
+        if(startIterator<to && tableElements.size()>0
+                && tableElements.get(tableElements.size()-1).getEndTime()<=startIterator){
             iterator = Range.create(startIterator,to);
+            Log.d("DayIndex", "freeSlot: "+startIterator+" - "+to);
+            Log.d("JACK", "freeSlot: "+tableElements.get(tableElements.size()-1).getEndTime());
+            ranges.add(iterator);
+        }
+        if(tableElements.size()==0){
+            iterator = Range.create(startIterator,to);
+            Log.d("DayIndex", "freeSlot: "+startIterator+" - "+to);
             ranges.add(iterator);
         }
         return ranges;
@@ -265,9 +281,9 @@ public class timeTable {
 
     public boolean isFree(){
         Calendar calendar = Calendar.getInstance();
-        if(freeSlot(calendar.get(Calendar.DAY_OF_WEEK),
+        if(freeSlot(calendar.get(Calendar.DAY_OF_WEEK)-2,
                 calendar.get(Calendar.HOUR_OF_DAY)*60+calendar.get(Calendar.MINUTE),
-                calendar.get(Calendar.HOUR_OF_DAY)*60+calendar.get(Calendar.MINUTE)+1).size()>0)
+                calendar.get(Calendar.HOUR_OF_DAY)*60+calendar.get(Calendar.MINUTE)+60).size()>0)
             return true;
         return false;
     }

@@ -281,6 +281,27 @@
             app:backgroundTint="@color/lbl_name"
             android:id="@+id/element_add_button"/>
 
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_height="?actionBarSize"
+            android:src="@drawable/ic_close_black_24dp"
+            android:tint="@color/white"
+            app:backgroundTint="@color/ngoGlossyRed"
+            android:id="@+id/element_cancel_button"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_height="?actionBarSize"
+            android:src="@drawable/ic_check_black_24dp"
+            android:tint="@color/white"
+            android:visibility="invisible"
+            app:backgroundTint="@color/ngoGreen"
+            android:id="@+id/element_done_button"/>
+
     </RelativeLayout>
 
 </LinearLayout>

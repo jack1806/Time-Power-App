@@ -44,22 +44,15 @@ import com.tomerrosenfeld.customanalogclockview.CustomAnalogClock;
 
 public class AddElementActivity extends AppCompatActivity {
 
-    EditText mHeader;
-    EditText mSubHeader;
-    TextView mFromTime,mFromDisplay;
-    TextView mToTime,mToDisplay;
+    EditText mHeader,mSubHeader;
+    TextView mFromTime,mFromDisplay,mToTime,mToDisplay;
     ImageButton backButton;
-    int mStartTimeInt = 0;
-    int mEndTimeInt = 0;
-    int mStartTimeHour;
-    int mStartTimeMinute;
-    int mEndTimeHour;
-    int mEndTimeMinute;
+    int mStartTimeInt = 0,mEndTimeInt = 0,mStartTimeHour,mStartTimeMinute,mEndTimeHour,mEndTimeMinute;
     String mCurrentDay;
     Intent mIntent;
     SharedPreferences mPreferences;
     CustomAnalogClock startClock,endClock;
-    FloatingActionButton mAdditem;
+    FloatingActionButton mAdditem,mDone,mCancel;
     RecyclerView mSlotRecyclerView;
     List<addSlot> addSlots = new ArrayList<>();
 

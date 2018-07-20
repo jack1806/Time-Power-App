@@ -38,6 +38,7 @@ import com.example.android.timepower.custom.objects.addSlot;
 import com.example.android.timepower.custom.objects.timeTable;
 import com.example.android.timepower.custom.objects.timeTableElement;
 import com.example.android.timepower.custom.objects.sharedPrefLinker;
+import com.example.android.timepower.interfaceClass.SlotDeleteListener;
 import com.google.gson.Gson;
 import com.tomerrosenfeld.customanalogclockview.CustomAnalogClock;
 
@@ -45,7 +46,7 @@ import com.tomerrosenfeld.customanalogclockview.CustomAnalogClock;
 public class AddElementActivity extends AppCompatActivity {
 
     EditText mHeader,mSubHeader;
-    TextView mFromTime,mFromDisplay,mToTime,mToDisplay;
+    TextView mFromTime,mFromDisplay,mToTime,mToDisplay,emptySlot;
     ImageButton backButton;
     int mStartTimeInt = 0,mEndTimeInt = 0,mStartTimeHour,mStartTimeMinute,mEndTimeHour,mEndTimeMinute;
     String mCurrentDay;
@@ -54,7 +55,7 @@ public class AddElementActivity extends AppCompatActivity {
     CustomAnalogClock startClock,endClock;
     FloatingActionButton mAdditem,mDone,mCancel;
     RecyclerView mSlotRecyclerView;
-    List<addSlot> addSlots = new ArrayList<>();
+    List<timeTableElement> addSlots = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +72,14 @@ public class AddElementActivity extends AppCompatActivity {
         mCurrentDay = mIntent.getStringExtra(intentContractClass.editTimeTable_To_AddElement_Day);
         mHeader = (EditText)findViewById(R.id.add_header);
         mSubHeader = (EditText) findViewById(R.id.add_sub_title);
-        backButton = (ImageButton) findViewById(R.id.back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AddElementActivity.this, EditTimeTable.class));
-                finish();
-            }
-        });
+//        backButton = (ImageButton) findViewById(R.id.back_button);
+//        backButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(AddElementActivity.this, EditTimeTable.class));
+//                finish();
+//            }
+//        });
         mAdditem = (FloatingActionButton) findViewById(R.id.element_add_button);
         mAdditem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,12 +88,30 @@ public class AddElementActivity extends AppCompatActivity {
                     addSlotItem();
             }
         });
+        mCancel = (FloatingActionButton) findViewById(R.id.element_cancel_button);
+        mCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(AddElementActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AddElementActivity.this, EditTimeTable.class));
+                finish();
+            }
+        });
+        mDone = (FloatingActionButton) findViewById(R.id.element_done_button);
+        mDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AddElementActivity.this, EditTimeTable.class));
+                finish();
+            }
+        });
         mSlotRecyclerView = (RecyclerView) findViewById(R.id.add_slot_recycler_view);
+        emptySlot = (TextView) findViewById(R.id.slot_empty);
 //        startClock = (CustomAnalogClock) findViewById(R.id.from_time_display);
 //        endClock = (CustomAnalogClock) findViewById(R.id.end_time_display);
         mPreferences = getApplicationContext().getSharedPreferences(sharedPrefContractClass.SHARED_PREF_NAME,
                 sharedPrefContractClass.SHARED_PREF_MODE_PRIVATE);
-//        mFromTime = (TextView) findViewById(R.id.add_start_time);
+//        mFromTime = (TextView) findViewById(R.id.add_start_time); Toast.makeText(AddElementActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
 //        mFromDisplay = (TextView)findViewById(R.id.start_time_show);
 //        startClock.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -340,14 +359,14 @@ public class AddElementActivity extends AppCompatActivity {
     public void finalAdd(addSlot slot) {
         Gson gson = new Gson();
         Log.d("ADDED SLOT", "finalAdd: " + gson.toJson(slot));
-        sharedPrefLinker prefLinker = new sharedPrefLinker();
+        final sharedPrefLinker prefLinker = new sharedPrefLinker();
         timeTableElement element = new timeTableElement(mHeader.getText().toString(),
                 mSubHeader.getText().toString(),
                 slot.getStart(), slot.getEnd());
         element.setFromTimeType(slot.getFrom().split(" ")[1]);
         element.setToTimeType(slot.getTo().split(" ")[1]);
         element.setDay(slot.getDay());
-        timeTable table = prefLinker.getTimeTable(mPreferences);
+        final timeTable table = prefLinker.getTimeTable(mPreferences);
         timeTableElement result = table.addElement(slot.getDay().substring(0, 3), element);
         if (result == null) {
             table.setUpdatedOnInt(Calendar.getInstance().getTimeInMillis());
@@ -361,9 +380,38 @@ public class AddElementActivity extends AppCompatActivity {
                 prefLinker.setLogin(true, mPreferences);
             //onBackPressed();
             Toast.makeText(getApplicationContext(), "DONE !", Toast.LENGTH_SHORT).show();
-            addSlots.add(slot);
+            addSlots.add(element);
+            if(addSlots.size()!=0 && emptySlot.getVisibility()!=View.INVISIBLE) {
+                mDone.setVisibility(View.VISIBLE);
+                mCancel.setVisibility(View.INVISIBLE);
+                emptySlot.setVisibility(View.INVISIBLE);
+            }
             AddSlotRecyclerViewAdapter addSlotRecyclerViewAdapter =
-                    new AddSlotRecyclerViewAdapter(addSlots,this);
+                    new AddSlotRecyclerViewAdapter(addSlots,this,new SlotDeleteListener() {
+                                @Override
+                                public void onDelete(timeTableElement timeTableElement, int position) {
+                                    if(table.delete(timeTableElement)){
+                                        addSlots.remove(position);
+                                        if(addSlots.size()==0){
+                                            mDone.setVisibility(View.INVISIBLE);
+                                            mCancel.setVisibility(View.VISIBLE);
+                                            emptySlot.setVisibility(View.VISIBLE);
+                                        }
+                                        table.setUpdatedOnInt(Calendar.getInstance().getTimeInMillis());
+                                        String dataJSON = prefLinker.getString(table);
+                                        Log.d("Element : \n", dataJSON);
+                                        SharedPreferences.Editor editor = mPreferences.edit();
+                                        editor.putString(sharedPrefContractClass.SHARED_PREF_TIME_TABLE_DATA,
+                                                dataJSON);
+                                        editor.commit();
+                                        if (!table.sync(getApplicationContext()))
+                                            prefLinker.setLogin(true, mPreferences);
+                                        mSlotRecyclerView.setAdapter(
+                                                new AddSlotRecyclerViewAdapter(addSlots,getApplicationContext(),this));
+                                        mSlotRecyclerView.invalidate();
+                                    }
+                                }
+                            });
             LinearLayoutManager layoutManager = new LinearLayoutManager(this,
                     LinearLayoutManager.VERTICAL,false);
             mSlotRecyclerView.setLayoutManager(layoutManager);

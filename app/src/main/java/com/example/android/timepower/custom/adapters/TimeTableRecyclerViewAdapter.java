@@ -83,7 +83,7 @@ public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTable
     public class CustomView extends RecyclerView.ViewHolder
             implements View.OnClickListener , View.OnLongClickListener{
 
-        TextView header,subHeader,startTime,endTime;
+        TextView header,subHeader,startTime,endTime,starter;
         ItemClickListener itemClickListener;
         String startFinal,endFinal;
         View view;
@@ -97,6 +97,7 @@ public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTable
             startTime = (TextView)itemView.findViewById(R.id.time_table_item_from_time);
             endTime = (TextView)itemView.findViewById(R.id.time_table_item_end_time);
             indicator = (ImageView) itemView.findViewById(R.id.startIndicator);
+            starter = (TextView)itemView.findViewById(R.id.startLetter);
             int a = (int)(Math.random()*50);
             Log.e(TAG, "CustomView: "+a);
             indicator.setColorFilter(Color.parseColor(GlobalVariableClass.colors[a%5]));
@@ -111,6 +112,7 @@ public class TimeTableRecyclerViewAdapter extends RecyclerView.Adapter<TimeTable
             subHeader.setText(element.getSubHeader());
             startTime.setText(startFinal);
             endTime.setText(endFinal);
+            starter.setText(""+element.getHeader().charAt(0));
         }
 
         public void setClickListener(ItemClickListener clickListener){

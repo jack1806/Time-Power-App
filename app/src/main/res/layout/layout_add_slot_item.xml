@@ -2,47 +2,150 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginLeft="8dp"
     android:orientation="vertical"
-    android:background="#ddd"
-    android:padding="2dp">
+    android:layout_marginTop="8dp"
+    android:background="#ddd">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/day"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Day"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"
-            android:gravity="center_vertical"
-            android:layout_margin="8dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
+            android:padding="2dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="DELETE"
-            android:layout_gravity="end"
-            android:drawableLeft="@drawable/ic_delete_forever_black_24dp"
-            android:drawableTint="@color/white"
-            android:fontFamily="@font/baron_neue_bold"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/day"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Day"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:padding="4dp"/>
+
+            <LinearLayout
+                android:padding="4dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start Time"
+                    android:textColor="@color/ngoBtnBackGrey"
+                    android:id="@+id/start_time"/>
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="1dp"
+                    android:background="@color/ngoBtnBackGrey"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="End Time"
+                    android:textColor="@color/ngoBtnBackGrey"
+                    android:id="@+id/end_time"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
             android:textColor="@color/white"
-            android:textStyle="bold"
+            android:src="@drawable/ic_close_black_24dp"
+            android:tint="@color/white"
+            android:background="@color/bootStrapPrimaryBtn"
             android:id="@+id/delete_item"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:layout_height="wrap_content">-->
 
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textColor="@color/tableItemTime"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:fontFamily="@font/comfortaa_bold"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:text="From"/>&ndash;&gt;-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Start Time"-->
+            <!--android:textColor="@color/ngoGrey2"-->
+            <!--android:id="@+id/start_time"/>-->
+
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:text="To"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:fontFamily="@font/comfortaa_bold"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textColor="@color/tableItemTime"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textStyle="bold"/>&ndash;&gt;-->
+
+        <!--<View-->
+            <!--android:layout_width="5dp"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@color/ngoGrey2"/>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:text="End Time"-->
+            <!--android:textColor="@color/ngoGrey2"-->
+            <!--android:id="@+id/end_time"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--&lt;!&ndash;<LinearLayout android:orientation="vertical"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_weight="1">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:text="Day"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textColor="@color/bg_register"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginLeft="8dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginTop="8dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginRight="8dp"/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/day"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:fontFamily="@font/comfortaa_regular"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:text="Day"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textColor="@color/black"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:gravity="center_vertical"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_margin="8dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textStyle="bold"/>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
         <!--<LinearLayout android:orientation="vertical"-->
             <!--android:layout_width="0dp"-->
             <!--android:layout_height="match_parent"-->
@@ -51,79 +154,52 @@
             <!--<TextView-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:text="Day"-->
+                <!--android:text="From"-->
                 <!--android:textStyle="bold"-->
-                <!--android:textColor="@color/bg_register"-->
+                <!--android:textColor="@color/samOrange"-->
                 <!--android:layout_marginLeft="8dp"-->
                 <!--android:layout_marginTop="8dp"-->
                 <!--android:layout_marginRight="8dp"/>-->
 
             <!--<TextView-->
-                <!--android:id="@+id/day"-->
+                <!--android:id="@+id/start_time"-->
                 <!--android:layout_width="match_parent"-->
-                <!--android:fontFamily="@font/comfortaa_regular"-->
                 <!--android:layout_height="match_parent"-->
-                <!--android:text="Day"-->
-                <!--android:textColor="@color/black"-->
+                <!--android:text="Start Time"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:layout_margin="8dp"-->
+                <!--android:textColor="@color/lbl_name"-->
+                <!--android:textStyle="bold"/>-->
+
+        <!--</LinearLayout>-->
+        <!--<LinearLayout android:orientation="vertical"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="To"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textColor="@color/samOrange"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginRight="8dp"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/end_time"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="End Time"-->
+                <!--android:textColor="@color/lbl_name"-->
                 <!--android:gravity="center_vertical"-->
                 <!--android:layout_margin="8dp"-->
                 <!--android:textStyle="bold"/>-->
 
         <!--</LinearLayout>-->
-        <LinearLayout android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="From"
-                android:textStyle="bold"
-                android:textColor="@color/samOrange"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"/>
-
-            <TextView
-                android:id="@+id/start_time"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Start Time"
-                android:gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:textColor="@color/lbl_name"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="To"
-                android:textStyle="bold"
-                android:textColor="@color/samOrange"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"/>
-
-            <TextView
-                android:id="@+id/end_time"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="End Time"
-                android:textColor="@color/lbl_name"
-                android:gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
+</LinearLayout>
 
     <!--<ImageView-->
         <!--android:background="@color/ngoGlossyRed"-->
@@ -145,5 +221,3 @@
         <!--android:layout_gravity="center"-->
         <!--android:layout_height="1dp"-->
         <!--android:background="@color/lbl_name"/>-->
-
-</LinearLayout>

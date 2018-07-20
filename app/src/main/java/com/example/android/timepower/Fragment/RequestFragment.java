@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.android.timepower.R;
 import com.example.android.timepower.custom.adapters.RequestRecyclerViewAdapter;
@@ -88,6 +90,10 @@ public class RequestFragment extends Fragment {
         final SharedPreferences sharedPreferences = getActivity().getSharedPreferences(sharedPrefContractClass.SHARED_PREF_NAME,
                 sharedPrefContractClass.SHARED_PREF_MODE_PRIVATE);
 
+        final TextView noRequestText = (TextView) view.findViewById(R.id.no_request_text);
+        noRequestText.setVisibility(View.INVISIBLE);
+        final ImageView noRequestImage = (ImageView) view.findViewById(R.id.no_request_image);
+        noRequestImage.setVisibility(View.INVISIBLE);
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -101,32 +107,38 @@ public class RequestFragment extends Fragment {
                 final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false);
                 final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.request_recycler_view);
                 final ArrayList<String> requestIds = profile.getRequestIds();
-                final ArrayList<userProfile> userProfiles = new ArrayList<>();
-                Log.d("LoL", "onCreateView: "+gson.toJson(profile));
-                ValueEventListener listener = new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        userProfile profile1 = dataSnapshot.getValue(userProfile.class);
-                        if(profile1!=null) {
-                            userProfiles.add(profile1);
-                            if(profile1.getmId().equals(requestIds.get(requestIds.size()-1))) {
-                                RequestRecyclerViewAdapter viewAdapter = new RequestRecyclerViewAdapter(userProfiles,getContext());
-                                recyclerView.setAdapter(viewAdapter);
-                                recyclerView.setLayoutManager(layoutManager);
+                if(requestIds.size()==0) {
+                    noRequestImage.setVisibility(View.VISIBLE);
+                    noRequestText.setVisibility(View.VISIBLE);
+                }
+                else {
+                    final ArrayList<userProfile> userProfiles = new ArrayList<>();
+                    Log.d("LoL", "onCreateView: " + gson.toJson(profile));
+                    ValueEventListener listener = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            userProfile profile1 = dataSnapshot.getValue(userProfile.class);
+                            if (profile1 != null) {
+                                userProfiles.add(profile1);
+                                if (profile1.getmId().equals(requestIds.get(requestIds.size() - 1))) {
+                                    RequestRecyclerViewAdapter viewAdapter = new RequestRecyclerViewAdapter(userProfiles, getContext());
+                                    recyclerView.setAdapter(viewAdapter);
+                                    recyclerView.setLayoutManager(layoutManager);
+                                }
                             }
+
                         }
 
-                    }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
+                        }
+                    };
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                    for (int i = 0; i < requestIds.size(); i++) {
+                        databaseReference.child(requestIds.get(i)).child("profile").addListenerForSingleValueEvent(listener);
+                        databaseReference.child(requestIds.get(i)).child("profile").removeEventListener(listener);
                     }
-                };
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                for(int i=0;i<requestIds.size();i++){
-                    databaseReference.child(requestIds.get(i)).child("profile").addListenerForSingleValueEvent(listener);
-                    databaseReference.child(requestIds.get(i)).child("profile").removeEventListener(listener);
                 }
             }
 

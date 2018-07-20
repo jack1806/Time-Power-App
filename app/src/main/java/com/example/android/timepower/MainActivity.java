@@ -91,9 +91,12 @@ public class MainActivity extends AppCompatActivity
                 if(headerView!=null && userId!=null){
                     TextView headerEmail = (TextView)headerView.findViewById(R.id.header_email);
                     TextView headerName = (TextView)headerView.findViewById(R.id.header_name);
+                    TextView imageTitle = (TextView)headerView.findViewById(R.id.user_start);
                     headerEmail.setText(profile.getmEmail());
-                    if(profile.getmName()!=null)
+                    if(profile.getmName()!=null) {
                         headerName.setText(profile.getmName());
+                        imageTitle.setText(""+profile.getmName().charAt(0));
+                    }
                 }
             }
 
@@ -178,7 +181,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void changeFrame(Fragment fragment, int id){
-        toolbar.setTitle(id);
+        if(id==R.string.nav_view_time_table)
+            id = R.string.today;
+        getSupportActionBar().setTitle(id);
         //toolbar.setTitleTextColor(getColor(R.color.colorAccent));
         //toolbar.setBackgroundColor(getColor(R.color.black));
         fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.main_container,fragment);
@@ -348,7 +353,7 @@ public class MainActivity extends AppCompatActivity
         NetworkInfo networkInfo;
         connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         networkInfo = connectivityManager.getActiveNetworkInfo();
-        if(networkInfo.isConnectedOrConnecting() && networkInfo !=null) {
+        if(networkInfo !=null && networkInfo.isConnectedOrConnecting()) {
             final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
             final ArrayList<userObject> userObjects = new ArrayList<>();
             databaseReference.addValueEventListener(new ValueEventListener() {

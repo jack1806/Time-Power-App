@@ -58,7 +58,7 @@ public class ViewTimeTableAdapter extends RecyclerView.Adapter<ViewTimeTableAdap
 
     public class CustomView extends RecyclerView.ViewHolder{
 
-        TextView header,subHeader,startTime,endTime;
+        TextView header,subHeader,startTime,endTime,starter;
         ItemClickListener itemClickListener;
         String startFinal,endFinal;
         View view;
@@ -71,6 +71,7 @@ public class ViewTimeTableAdapter extends RecyclerView.Adapter<ViewTimeTableAdap
             subHeader = (TextView)itemView.findViewById(R.id.time_table_item_sub_title);
             startTime = (TextView)itemView.findViewById(R.id.time_table_item_from_time);
             endTime = (TextView)itemView.findViewById(R.id.time_table_item_end_time);
+            starter = (TextView)itemView.findViewById(R.id.startLetter);
             indicator = (ImageView) itemView.findViewById(R.id.startIndicator);
             int a = (int)(Math.random()*50);
             Log.e(TAG, "CustomView: "+a);
@@ -84,6 +85,7 @@ public class ViewTimeTableAdapter extends RecyclerView.Adapter<ViewTimeTableAdap
             subHeader.setText(element.getSubHeader());
             startTime.setText(startFinal);
             endTime.setText(endFinal);
+            starter.setText(""+element.getHeader().charAt(0));
         }
 
     }

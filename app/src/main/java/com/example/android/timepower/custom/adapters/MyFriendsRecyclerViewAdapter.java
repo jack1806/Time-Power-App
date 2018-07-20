@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,8 +74,9 @@ public class MyFriendsRecyclerViewAdapter extends RecyclerView.Adapter<MyFriends
 
         TextView mName;
         TextView mEmail;
+        TextView mNameStart;
         ImageView mOnline;
-        ImageView viewTable;
+        RelativeLayout viewTable;
         View main;
 
         public CustomView(View itemView) {
@@ -82,12 +84,14 @@ public class MyFriendsRecyclerViewAdapter extends RecyclerView.Adapter<MyFriends
             main = itemView;
             mName = (TextView) itemView.findViewById(R.id.profile_user_name);
             mEmail = (TextView) itemView.findViewById(R.id.profile_email);
+            mNameStart = (TextView) itemView.findViewById(R.id.username_start);
             mOnline = (ImageView) itemView.findViewById(R.id.online_status);
-            viewTable = (ImageView) itemView.findViewById(R.id.view_time_table);
+            viewTable = (RelativeLayout) itemView.findViewById(R.id.view_time_table);
         }
 
         public void bind(final userProfile profile, final timeTable table){
             mName.setText(profile.getmName().toLowerCase().replace(" ",""));
+            mNameStart.setText(""+profile.getmName().replace(" ","").charAt(0));
             mEmail.setText(profile.getmEmail());
             mOnline.setVisibility(View.VISIBLE);
             if(table.isFree())

@@ -13,20 +13,14 @@
         <item android:id="@+id/nav_home_page"
             android:icon="@drawable/ic_timeline_black_24dp"
             android:title="@string/nav_home_page"/>
-        <item android:title="Social">
-            <menu>
-                <group android:checkableBehavior="single">
-                    <item android:title="@string/nav_my_friends"
-                        android:id="@+id/nav_my_fr"/>
-                    <item android:title="@string/nav_add_fr"
-                        android:id="@+id/nav_add_fr"/>
-                    <item android:title="@string/nav_request"
-                        android:id="@+id/nav_requests"/>
-                    <!--<item android:id="@+id/nav_free_fr"-->
-                        <!--android:title="@string/nav_free_friends"/>-->
-                </group>
-            </menu>
-        </item>
+        <item android:title="@string/nav_my_friends"
+            android:icon="@drawable/ic_group_black_24dp"
+            android:id="@+id/nav_my_fr"/>
+        <item android:title="@string/nav_add_fr"
+            android:icon="@drawable/ic_group_add_black_24dp"
+            android:id="@+id/nav_add_fr"/>
+        <item android:title="@string/nav_request"
+            android:icon="@drawable/ic_query_builder_black_24dp"
+            android:id="@+id/nav_requests"/>
     </group>
-
 </menu>
